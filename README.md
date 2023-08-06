@@ -1,2 +1,2 @@
 # GPA_Calculator
-GPA calculator using JAVA
+GPA calculator with Java
