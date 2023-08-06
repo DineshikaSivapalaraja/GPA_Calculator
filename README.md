@@ -1,2 +1,2 @@
 # GPA_Calculator
-GPA calculator using HTML, CSS and JavaScript
+GPA calculator using JAVA
