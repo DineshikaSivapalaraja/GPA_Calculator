@@ -8,46 +8,71 @@ public class Main {
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("Enter number of credits:");
-		String credits = scanner.nextLine();
-		
-		System.out.println("Enter grade:");
-		String grade = scanner.nextLine();
-		
-		Double gradeValue = 0.0;
-		if (grade.equalsIgnoreCase("A+")) { //.equalsIgnoreCase-> for allow A,a without case sensitive
-			gradeValue = 4.0;
-		}else if (grade.equalsIgnoreCase("A")) {
-			gradeValue = 4.0;
-		}else if (grade.equalsIgnoreCase("A-")) {
-			gradeValue = 3.7;
-		}else if (grade.equalsIgnoreCase("B+")) {
-			gradeValue = 3.3;
-		}else if (grade.equalsIgnoreCase("B")) {
-			gradeValue = 3.0;
-		}else if (grade.equalsIgnoreCase("B-")) {
-			gradeValue = 2.7;
-		}else if (grade.equalsIgnoreCase("C+")) {
-			gradeValue = 2.4;
-		}else if (grade.equalsIgnoreCase("C")) {
-			gradeValue = 2.0;
-		}else if (grade.equalsIgnoreCase("C-")) {
-			gradeValue = 1.7;
-		}else if (grade.equalsIgnoreCase("D+")) {
-			gradeValue = 1.3;
-		}else if (grade.equalsIgnoreCase("D")) {
-			gradeValue = 1.0;
-		}else if (grade.equalsIgnoreCase("E")) {
-			gradeValue = 0.0;
-		}else {
-			System.out.println("Grade is not Valid");		
+		boolean validCredits = true;//false;
+		Integer credits = 0;
+		do {
+			
+			 validCredits = true;
+			 
+		     System.out.print("Enter number of credits: ");  //println-> credit will show in next line
+		     String creditsString = scanner.nextLine();
+		     
+		     try {
+			      credits = Integer.parseInt(creditsString);
+		     }catch (NumberFormatException nfe) {
+			       System.out.println("Enter Valid Integer\n");
+			       validCredits = false;
+			 }
 		}
+		while (!validCredits);//(validCredits == false);
 		
-		Double points = gradeValue * Double.parseDouble(credits);
-		Double gpa = points / Double.parseDouble(credits);
+		
+		boolean validGrade = true;
+//		System.out.print("Enter grade            : ");
+//		String grade = scanner.nextLine();
+		String grade = "";
+		Double gradeValue = 0.0;
+		
+		do {
+		  validGrade = true;
+		  System.out.print("Enter grade: ");
+          grade = scanner.nextLine();
+		  
+		  if (grade.equalsIgnoreCase("A+") || (grade.equalsIgnoreCase("A"))) { //.equalsIgnoreCase-> for allow A,a without case sensitive
+			 gradeValue = 4.0;
+		  }else if (grade.equalsIgnoreCase("A-")) {
+			 gradeValue = 3.7;
+		  }else if (grade.equalsIgnoreCase("B+")) {
+			 gradeValue = 3.3;
+		  }else if (grade.equalsIgnoreCase("B")) {
+			 gradeValue = 3.0;
+		  }else if (grade.equalsIgnoreCase("B-")) {
+			 gradeValue = 2.7;
+		  }else if (grade.equalsIgnoreCase("C+")) {
+			 gradeValue = 2.4;
+		  }else if (grade.equalsIgnoreCase("C")) {
+			 gradeValue = 2.0;
+		  }else if (grade.equalsIgnoreCase("C-")) {
+			 gradeValue = 1.7;
+		  }else if (grade.equalsIgnoreCase("D+")) {
+			 gradeValue = 1.3;
+		  }else if (grade.equalsIgnoreCase("D")) {
+			 gradeValue = 1.0;
+		  }else if (grade.equalsIgnoreCase("E")) {
+			 gradeValue = 0.0;
+		  }else {
+			System.out.println("Grade is not Valid");		
+		    validGrade = false;
+		  }
+		}
+		while(!validGrade);
+		
+		
+		Double points = gradeValue * credits;//Double.parseDouble(credits);
+		Double gpa = points / credits;//Double.parseDouble(credits);
 		
 		System.out.println("\n");
-		System.out.println("Credits:" + credits);
+		System.out.println("Credits:" + credits);//creditsString
 		System.out.println("Grade  :" + grade);
 		System.out.println("Points :" + points);
 		
